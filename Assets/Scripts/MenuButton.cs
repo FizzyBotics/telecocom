@@ -1,64 +1,31 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class MenuButton : MonoBehaviour
+public class MenuButton : MonoBehaviour, IPointerEnterHandler
 {
-	[SerializeField] MenuButtonController menuButtonController;
-	[SerializeField] Animator animator;
-	[SerializeField] AnimatorFunctions animatorFunctions;
-	[SerializeField] int thisIndex;
-	[SerializeField] Image button;
-    bool animationNotExecuted = true;
-    void Update()
+    [SerializeField] Animator animator;
+
+    public int buttonIndex;
+    public delegate void ButtonAction(int buttonIndex);
+    public ButtonAction OnButtonHovered;
+
+    public void AnimateHovered()
     {
-		if(menuButtonController.currentButtonIndex == thisIndex)
-		{
-			animator.SetBool ("selected", true);
-			if(Input.GetAxis ("Submit") == 1 || Input.GetMouseButtonDown(0)){
-				animator.SetBool ("pressed", true);
+        animator.SetBool("selected", true);
+    }
 
-                //On met le menu en fondu
-                Debug.Log("le bout à été cliqué, fondu !s");
-                FadeMenu.fadeOut = true;
+    public void AnimateUnhovered()
+    {
+        animator.SetBool("selected", false);
+    }
 
+    public void AnimateSelected()
+    {
+        animator.SetBool("pressed", true);
+    }
 
-			}else if (animator.GetBool ("pressed")){
-				animator.SetBool ("pressed", false);
-				animatorFunctions.disableOnce = true;
-			}
-		}else{
-			animator.SetBool ("selected", false);
-		}
-
-        if (button != null)
-        {
-            // Obtenir les coordonnées de la souris
-            Vector3 sourisPosition = Input.mousePosition;
-
-            // Obtenir le RectTransform du button
-            RectTransform buttonRect = button.GetComponent<RectTransform>();
-
-            // Convertir la position de la souris en coordonnées locales du rectangle du button
-            Vector2 localMousePosition;
-            if (RectTransformUtility.ScreenPointToLocalPointInRectangle(buttonRect, sourisPosition, null, out localMousePosition))
-            {
-                // Vérifier si la souris est sur le button
-                if (buttonRect.rect.Contains(localMousePosition))
-                {
-                    if (animationNotExecuted)
-                    {
-                        menuButtonController.currentButtonIndex = thisIndex;
-                        animationNotExecuted = false;
-                    }
-                }
-                else
-                {
-                    animationNotExecuted = true;
-                }
-            }
-
-
-        }
-
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        OnButtonHovered(buttonIndex);
     }
 }

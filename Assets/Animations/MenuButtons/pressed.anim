@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: press
+  m_Name: pressed
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -458,8 +458,7 @@ AnimationClip:
   - time: 0
     functionName: PlaySound
     data: 
-    objectReferenceParameter: {fileID: 8300000, guid: cd8f231778a234138849b780b1e91d98,
-      type: 3}
+    objectReferenceParameter: {fileID: 8300000, guid: cd8f231778a234138849b780b1e91d98, type: 3}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
