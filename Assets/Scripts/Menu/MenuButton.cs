@@ -4,9 +4,9 @@ using UnityEngine.EventSystems;
 public class MenuButton : MonoBehaviour, IPointerEnterHandler
 {
     public int buttonIndex;
-    public delegate void ButtonAction(int buttonIndex);
-    public ButtonAction OnButtonHovered;
-    public ButtonAction OnButtonSelected;
+    public delegate void ButtonDelegate(int buttonIndex);
+    public ButtonDelegate OnButtonHovered;
+    public ButtonDelegate OnButtonSelected;
 
     public void AnimateHovered()
     {
@@ -25,11 +25,11 @@ public class MenuButton : MonoBehaviour, IPointerEnterHandler
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        OnButtonHovered(buttonIndex);
+        OnButtonHovered?.Invoke(buttonIndex);
     }
 
     public void OnSelection()
     {
-        OnButtonSelected(buttonIndex);
+        OnButtonSelected?.Invoke(buttonIndex);
     }
 }

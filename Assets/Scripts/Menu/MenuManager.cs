@@ -1,5 +1,5 @@
-using Unity.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
@@ -63,6 +63,25 @@ public class MenuManager : MonoBehaviour
             ChangeHoveredButton(buttonIndex); // In case the right button wasn't hovered (unlikely)
             menuButtons[currentButtonIndex].AnimateSelected();
             audioPlayer.PlayAudioClip("button_selected");
+            HandleButtonPressed(buttonIndex);
+        }
+    }
+
+    private void HandleButtonPressed(int buttonIndex)
+    {
+        Debug.Log("Button " + buttonIndex + " pressed");
+        switch (buttonIndex)
+        {
+            case 0:
+                Debug.Log("Entraînement");
+                SceneManager.LoadScene("Map");
+                break;
+            case 1:
+                Debug.Log("Multijoueur");
+                break;
+            case 2:
+                Debug.Log("Options");
+                break;
         }
     }
 }
