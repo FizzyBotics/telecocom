@@ -7,8 +7,8 @@ public class ItemSpawner : MonoBehaviour, IDragHandler, IBeginDragHandler
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        Debug.Log("OnBeginDrag");
         eventData.pointerDrag = Instantiate(itemPrefab, transform);
+        eventData.pointerDrag.GetComponent<Item>().OnBeginDrag(eventData);
     }
 
     public void OnDrag(PointerEventData eventData)
