@@ -52,6 +52,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: 0
   yellowLightning: {fileID: 4359685431321095492}
+  yellowLightningLight: {fileID: 8195713071472072711}
   circleProgressBar: {fileID: 8079157416115909104}
 --- !u!1001 &1196309282570196846
 PrefabInstance:
@@ -174,6 +175,17 @@ RectTransform:
 --- !u!114 &4359685431321095492 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3178013262173157930, guid: 7034f80a2d95efe4598fd700bd0cdd9f, type: 3}
+  m_PrefabInstance: {fileID: 1196309282570196846}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8195713071472072711 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7000600884502007657, guid: 7034f80a2d95efe4598fd700bd0cdd9f, type: 3}
   m_PrefabInstance: {fileID: 1196309282570196846}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
