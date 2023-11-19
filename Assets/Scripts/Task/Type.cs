@@ -14,10 +14,9 @@ public class Type : MonoBehaviour
     [SerializeField] private Image tv, web, pc, phone, color;
     public TypeElement type;
     private Color blueTv = new Color(54f / 255f, 69f / 255f, 152f / 255f);
-    private Color greenWeb = new Color(20f / 255f, 163f / 255f, 58f / 255f);
-    private Color redPc = new Color(163f / 255f, 44f / 255f, 20f / 255f);
-    private Color orangePhone = new Color(163f / 255f, 134f / 255f, 20f / 255f);
-
+    private Color whitePc = new Color(173f / 255f, 130f / 255f, 122f / 255f);
+    private Color purpleWeb = new Color(133f / 255f, 123f / 255f, 212f / 255f);
+    private Color orangePhone = new Color(164f / 255f, 128f / 255f, 66f / 255f);
     public Color currentColor;
 
     public Type()
@@ -31,11 +30,11 @@ public class Type : MonoBehaviour
         currentColor = newColor;
     }
 
-    private void SetVisibility(bool tvVisibility, bool webVisibility, bool pcVisibility, bool phoneVisibility)
+    private void SetVisibility(bool tvVisibility, bool pcVisibility, bool webVisibility, bool phoneVisibility)
     {
         tv.enabled = tvVisibility;
-        web.enabled = webVisibility;
         pc.enabled = pcVisibility;
+        web.enabled = webVisibility;
         phone.enabled = phoneVisibility;
     }
 
@@ -44,16 +43,16 @@ public class Type : MonoBehaviour
         switch (type)
         {
             case TypeElement.TV:
-                type = TypeElement.WEB;
-                SetColor(greenWeb);
+                type = TypeElement.PC;
+                SetColor(whitePc);
                 SetVisibility(false, true, false, false);
                 break;
-            case TypeElement.WEB:
-                type = TypeElement.PC;
-                SetColor(redPc);
+            case TypeElement.PC:
+                type = TypeElement.WEB;
+                SetColor(purpleWeb);
                 SetVisibility(false, false, true, false);
                 break;
-            case TypeElement.PC:
+            case TypeElement.WEB:
                 type = TypeElement.PHONE;
                 SetColor(orangePhone);
                 SetVisibility(false, false, false, true);

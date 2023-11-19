@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 public enum Direction { LEFT, RIGHT }
 
@@ -9,6 +10,8 @@ public class Popup : MonoBehaviour
     [SerializeField] private Direction moveSpawndirection;
 
     private RectTransform rectTransform;
+
+    public TextMeshProUGUI textContent;
 
     void Start()
     {
@@ -22,7 +25,7 @@ public class Popup : MonoBehaviour
     public float GetTheCurrentWidthWindows(float x)
     {
         float valeurInitiale = rectTransform.rect.width;
-        float nouvelleValeur = x / 3840f * valeurInitiale;
+        float nouvelleValeur = x / 1920f * valeurInitiale;
         return nouvelleValeur;
     }
 
@@ -44,7 +47,7 @@ public class Popup : MonoBehaviour
     public void MoveRight()
     {
         Vector3 startPos = transform.position;
-        Vector3 endPos = startPos + new Vector3(GetScreenSizeInPixels(), 0f, 0f);
+        Vector3 endPos = startPos + new Vector3(GetScreenSizeInPixels() / 2.1f, 0f, 0f);
         LeanTween.move(gameObject, endPos, duration)
             .setEase(LeanTweenType.easeOutQuad)
             .setOnComplete(OnMovementComplete);
@@ -53,7 +56,7 @@ public class Popup : MonoBehaviour
     public void MoveLeft()
     {
         Vector3 startPos = transform.position;
-        Vector3 endPos = startPos + new Vector3(-GetScreenSizeInPixels(), 0f, 0f);
+        Vector3 endPos = startPos + new Vector3(-GetScreenSizeInPixels() / 2.1f, 0f, 0f);
         LeanTween.move(gameObject, endPos, duration)
             .setEase(LeanTweenType.easeOutQuad)
             .setOnComplete(OnMovementComplete);

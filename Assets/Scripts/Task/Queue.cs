@@ -1,11 +1,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Queue : MonoBehaviour
 {
     [SerializeField] private Server[] servers;
-    [SerializeField] GameObject prefab, canva;
+    [SerializeField] GameObject prefab;
+    [SerializeField] private Image bTv, bPc, bWeb, bPhone; //background colors of counter
+    public GameObject canva;
 
     public Counter tv, pc, web, phone;
     public List<VirtualMachine> bookedList = new List<VirtualMachine>();
@@ -13,6 +16,10 @@ public class Queue : MonoBehaviour
     private bool winPopupSpawn = false;
 
 
+    private static Color green = new Color(71f / 255f, 190f / 255f, 127f / 255f);
+    private static Color red = new Color(190f / 255f, 71f / 255f, 71f / 255f);
+
+    void UpdateColor(Image element, int value) => element.color = (value == 0) ? green : red;
 
     void Update()
     {
@@ -22,6 +29,10 @@ public class Queue : MonoBehaviour
             ProcessVirtualMachines(TypeElement.PC, pc);
             ProcessVirtualMachines(TypeElement.WEB, web);
             ProcessVirtualMachines(TypeElement.PHONE, phone);
+            UpdateColor(bTv, tv.value);
+            UpdateColor(bPc, pc.value);
+            UpdateColor(bWeb, web.value);
+            UpdateColor(bPhone, phone.value);
 
             if (tv.value == 0 && pc.value == 0 && web.value == 0 && phone.value == 0 && winPopupSpawn == false && canva != null)
             {
