@@ -71,12 +71,12 @@ public class VirtualMachine : MonoBehaviour
     {
         if (queue != null)
         {
-            queue.bookedList.Remove(this);
-            if (GetTypeElement() == TypeElement.TV && slotsTaken > 0) queue.tv.Increment(queue.tv.value + slotsTaken);
-            if (GetTypeElement() == TypeElement.PC && slotsTaken > 0) queue.pc.Increment(queue.pc.value + slotsTaken);
-            if (GetTypeElement() == TypeElement.WEB && slotsTaken > 0) queue.web.Increment(queue.web.value + slotsTaken);
-            if (GetTypeElement() == TypeElement.PHONE && slotsTaken > 0) queue.phone.Increment(queue.phone.value + slotsTaken);
+            var oldvalue = queue.values[type.type] + 0;
+            var oldslot = slotsTaken + 0;
+            queue.values[type.type] += slotsTaken;
             slotsTaken = 0;
+            queue.bookedList.Remove(this);
+            queue.counters[type.type].Increment(oldvalue, oldvalue + oldslot);
         }
     }
 
