@@ -71,12 +71,12 @@ MonoBehaviour:
   bPc: {fileID: 493044921549890976}
   bWeb: {fileID: 1915818783833754216}
   bPhone: {fileID: 2979482020002091534}
-  canva: {fileID: 0}
-  tv: {fileID: 3000010334344970552}
-  pc: {fileID: 6503815463362682692}
-  web: {fileID: 6763140676925467817}
-  phone: {fileID: 889081338249352871}
   bookedList: []
+  canva: {fileID: 0}
+  cTv: {fileID: 3000010334344970552}
+  cPc: {fileID: 6503815463362682692}
+  cWeb: {fileID: 6763140676925467817}
+  cPhone: {fileID: 889081338249352871}
 --- !u!1 &516327448648276717
 GameObject:
   m_ObjectHideFlags: 0
@@ -666,7 +666,6 @@ MonoBehaviour:
   queue: {fileID: 0}
   textMesh: {fileID: 743174250590562094}
   duration: 1
-  value: 0
 --- !u!1 &2459896068360002651
 GameObject:
   m_ObjectHideFlags: 0
@@ -1254,7 +1253,6 @@ MonoBehaviour:
   queue: {fileID: 0}
   textMesh: {fileID: 537361283493382011}
   duration: 1
-  value: 0
 --- !u!1 &3482467468386146139
 GameObject:
   m_ObjectHideFlags: 0
@@ -1937,7 +1935,6 @@ MonoBehaviour:
   queue: {fileID: 0}
   textMesh: {fileID: 5334897806214241141}
   duration: 1
-  value: 0
 --- !u!1 &5843122128023833224
 GameObject:
   m_ObjectHideFlags: 0
@@ -2392,7 +2389,6 @@ MonoBehaviour:
   queue: {fileID: 0}
   textMesh: {fileID: 6817544900771629444}
   duration: 1
-  value: 0
 --- !u!1 &7338801511522352717
 GameObject:
   m_ObjectHideFlags: 0

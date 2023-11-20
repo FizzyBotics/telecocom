@@ -21,7 +21,7 @@ public class TutorialPopup : MonoBehaviour
     {
         Vector3 startPos = transform.position;
         Vector3 endPos = startPos + new Vector3(0f, -200f, 0f);
-        LeanTween.move(gameObject, endPos, 2f).setEase(LeanTweenType.easeOutElastic).setLoopClamp();
+        LeanTween.move(gameObject, endPos, 2f).setEase(LeanTweenType.easeOutElastic);
     }
 
     void SetActiveObject(GameObject obj)

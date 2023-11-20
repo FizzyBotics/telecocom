@@ -7,53 +7,47 @@ public class Counter : MonoBehaviour
     [SerializeField] private Queue queue;
     public TextMeshProUGUI textMesh;
     public float duration = 1f;
-    [Range(0, 90)] public int value;
+    private Coroutine currentCoroutine;
 
-    public void Start() => SetValue(value);
-
-    public void Decrement(int min) => StartCoroutine(DecrementValue(min, 1));
-    public void Increment(int max) => StartCoroutine(IncrementValue(max, 1));
-
-
-    private IEnumerator DecrementValue(int min, float duration)
+    public void Decrement(int val, int min)
     {
-        Debug.Log($"Décrémentation en cours: {value} -> {min}");
-        int currentValue = value;
-        float d = duration / currentValue;
-        if (d > 0.3f)
-        {
-            d = 0.3f;
-        }
-
-        while (value > min)
-        {
-            value--;
-            SetValue(value);
-            yield return new WaitForSeconds(d);
-        }
-        Debug.Log($"Décrémentation finie: {currentValue} -> {value}");
+        if (currentCoroutine != null) StopCoroutine(currentCoroutine);
+        currentCoroutine = StartCoroutine(DecrementValue(val, min, 1));
     }
 
-    private IEnumerator IncrementValue(int max, float duration)
+    public void Increment(int val, int max)
     {
-
-        Debug.Log($"Incrémentation en cours: {value} -> {max}");
-        int currentValue = value;
-        float d = duration / currentValue;
-        if (d > 0.3f)
-        {
-            d = 0.3f;
-        }
-        while (value < max)
-        {
-            value++;
-            SetValue(value);
-            yield return new WaitForSeconds(d);
-        }
-        Debug.Log($"Incrémentation finie: {currentValue} -> {value}");
+        if (currentCoroutine != null) StopCoroutine(currentCoroutine);
+        currentCoroutine = StartCoroutine(IncrementValue(val, max, 1));
     }
 
-    public void SetValue(int value) => textMesh.SetText(FormatIntWithSpaces(value));
+    private IEnumerator DecrementValue(int displayValue, int min, float duration)
+    {
+        float d = duration / displayValue;
+        if (d > 0.3f) d = 0.3f;
+
+        while (displayValue > min)
+        {
+            displayValue--;
+            SetValue(displayValue);
+            yield return new WaitForSeconds(d);
+        }
+    }
+
+    private IEnumerator IncrementValue(int displayValue, int max, float duration)
+    {
+        float d = duration / displayValue;
+        if (d > 0.3f) d = 0.3f;
+
+        while (displayValue < max)
+        {
+            displayValue++;
+            SetValue(displayValue);
+            yield return new WaitForSeconds(d);
+        }
+    }
+
+    public void SetValue(int val) => textMesh.SetText(FormatIntWithSpaces(val));
 
     private string FormatIntWithSpaces(int number)
     {

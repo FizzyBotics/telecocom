@@ -2,39 +2,68 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class Queue : MonoBehaviour
 {
-    [SerializeField] private Server[] servers;
-    [SerializeField] GameObject prefab;
-    [SerializeField] private Image bTv, bPc, bWeb, bPhone; //background colors of counter
-    public GameObject canva;
-
-    public Counter tv, pc, web, phone;
-    public List<VirtualMachine> bookedList = new List<VirtualMachine>();
-
-    private bool winPopupSpawn = false;
-
 
     private static Color green = new Color(71f / 255f, 190f / 255f, 127f / 255f);
     private static Color red = new Color(190f / 255f, 71f / 255f, 71f / 255f);
 
-    void UpdateColor(Image element, int value) => element.color = (value == 0) ? green : red;
+    [SerializeField] private Server[] servers;
+    [SerializeField] private GameObject prefab;
+    [SerializeField] private Image bTv, bPc, bWeb, bPhone; //background colors of counter
+    public List<VirtualMachine> bookedList = new List<VirtualMachine>();
+    public GameObject canva;
+    public Counter cTv, cPc, cWeb, cPhone;
+    public Dictionary<TypeElement, int> values = new Dictionary<TypeElement, int>();
+
+    public Dictionary<TypeElement, Image> images = new Dictionary<TypeElement, Image>();
+
+    public Dictionary<TypeElement, Counter> counters = new Dictionary<TypeElement, Counter>();
+    private bool winPopupSpawn = false;
+
+
+
+    private void Start()
+    {
+        images.Add(TypeElement.TV, bTv);
+        images.Add(TypeElement.PC, bPc);
+        images.Add(TypeElement.WEB, bWeb);
+        images.Add(TypeElement.PHONE, bPhone);
+
+        counters.Add(TypeElement.TV, cTv);
+        counters.Add(TypeElement.PC, cPc);
+        counters.Add(TypeElement.WEB, cWeb);
+        counters.Add(TypeElement.PHONE, cPhone);
+
+        foreach (TypeElement t in Enum.GetValues(typeof(TypeElement))) values.Add(t, 20);
+        foreach (var v in counters.ToList())
+        {
+            v.Value.SetValue(20);
+
+        }
+    }
+    private void UpdateColor(Image element, TypeElement type) => element.color = (values[type] == 0) ? green : red;
+    private void CheckColor()
+    {
+        foreach (TypeElement t in Enum.GetValues(typeof(TypeElement))) UpdateColor(images[t], t);
+    }
+
+    public bool AllElementsZero()
+    {
+        return values.Values.All(value => value == 0);
+    }
+
 
     void Update()
     {
-        if (servers.Count() > 0)
+        CheckColor();
+        if (servers.Length > 0)
         {
-            ProcessVirtualMachines(TypeElement.TV, tv);
-            ProcessVirtualMachines(TypeElement.PC, pc);
-            ProcessVirtualMachines(TypeElement.WEB, web);
-            ProcessVirtualMachines(TypeElement.PHONE, phone);
-            UpdateColor(bTv, tv.value);
-            UpdateColor(bPc, pc.value);
-            UpdateColor(bWeb, web.value);
-            UpdateColor(bPhone, phone.value);
+            foreach (var v in values.ToList()) ProcessVirtualMachines(v.Key);
 
-            if (tv.value == 0 && pc.value == 0 && web.value == 0 && phone.value == 0 && winPopupSpawn == false && canva != null)
+            if (AllElementsZero() && !winPopupSpawn && canva != null)
             {
                 Instantiate(prefab, canva.transform);
                 winPopupSpawn = true;
@@ -42,25 +71,24 @@ public class Queue : MonoBehaviour
         }
     }
 
-    private void ProcessVirtualMachines(TypeElement elementType, Counter decrementer)
+    private void ProcessVirtualMachines(TypeElement type)
     {
-        if (decrementer.value > 0)
+        foreach (Server server in servers)
         {
-            foreach (Server server in servers)
+            List<VirtualMachine> elements = server.GetVirtualMachineType(type);
+            if (elements != null && elements.Count > 0)
             {
-                List<VirtualMachine> elements = server.GetVirtualMachineType(elementType);
-                if (elements != null && elements.Count > 0)
+                foreach (VirtualMachine element in elements)
                 {
-                    foreach (VirtualMachine element in elements)
+                    if (!bookedList.Contains(element))
                     {
-                        if (!bookedList.Contains(element))
-                        {
-                            bookedList.Add(element);
-                            element.slotsTaken = (decrementer.value > 10) ? 10 : decrementer.value;
-                            Debug.Log($"Envoie des {element.slotsTaken} users dans la machine virtuelle");
-                            var target = (decrementer.value - 10 >= 0) ? (decrementer.value - 10) : 0;
-                            if (decrementer.value > 0) decrementer.Decrement(target);
-                        }
+                        bookedList.Add(element);
+                        element.slotsTaken = (values[type] > 10) ? 10 : values[type];
+                        var target = (values[type] - 10 >= 0) ? (values[type] - 10) : 0;
+                        var oldvalue = values[type];
+                        values[type] = target;
+                        //Debug.Log(oldvalue + " " + " " + target + " " + values);
+                        if (oldvalue > 0) counters[type].Decrement(oldvalue, target);
                     }
                 }
             }

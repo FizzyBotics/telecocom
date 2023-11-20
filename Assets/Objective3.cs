@@ -6,7 +6,7 @@ public class Objective3 : MonoBehaviour
     [SerializeField] Objective objective;
     void Update()
     {
-        if (queue.tv.value == 0 && queue.pc.value == 0 && queue.web.value == 0 && queue.phone.value == 0 && !objective.released)
+        if (queue.AllElementsZero() && !objective.released)
             objective.released = true;
     }
 }
