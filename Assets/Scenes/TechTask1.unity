@@ -253,6 +253,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1649957083921236000, guid: 8f3b25fca6179f54e8faccb22b226916, type: 3}
+      propertyPath: tv
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 2801007606601486642, guid: 8f3b25fca6179f54e8faccb22b226916, type: 3}
       propertyPath: m_Name
       value: TechnicianTask
@@ -432,7 +436,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1772830102482208273, guid: 797990cfc2d2b304d97f93222dc2c774, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 233
+      value: 540
       objectReference: {fileID: 0}
     - target: {fileID: 1772830102482208273, guid: 797990cfc2d2b304d97f93222dc2c774, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -448,11 +452,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3171222459347402855, guid: 797990cfc2d2b304d97f93222dc2c774, type: 3}
       propertyPath: content
-      value: La file d'attente
+      value: Il faut que toutes files d'attentes soient vides !
       objectReference: {fileID: 0}
     - target: {fileID: 3171222459347402855, guid: 797990cfc2d2b304d97f93222dc2c774, type: 3}
       propertyPath: direction
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3171222459347402855, guid: 797990cfc2d2b304d97f93222dc2c774, type: 3}
       propertyPath: withCircle
@@ -715,11 +719,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1772830102482208273, guid: 797990cfc2d2b304d97f93222dc2c774, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -473
+      value: -488
       objectReference: {fileID: 0}
     - target: {fileID: 1772830102482208273, guid: 797990cfc2d2b304d97f93222dc2c774, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -23
+      value: 67
       objectReference: {fileID: 0}
     - target: {fileID: 1772830102482208273, guid: 797990cfc2d2b304d97f93222dc2c774, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
