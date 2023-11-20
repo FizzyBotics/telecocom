@@ -11,12 +11,14 @@ public class Counter : MonoBehaviour
 
     public void Decrement(int val, int min)
     {
+        Debug.Log("Decrement");
         if (currentCoroutine != null) StopCoroutine(currentCoroutine);
         currentCoroutine = StartCoroutine(DecrementValue(val, min, 1));
     }
 
     public void Increment(int val, int max)
     {
+        Debug.Log("Increment");
         if (currentCoroutine != null) StopCoroutine(currentCoroutine);
         currentCoroutine = StartCoroutine(IncrementValue(val, max, 1));
     }

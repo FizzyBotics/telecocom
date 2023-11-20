@@ -15,6 +15,9 @@ public class Queue : MonoBehaviour
     [SerializeField] private Image bTv, bPc, bWeb, bPhone; //background colors of counter
     public List<VirtualMachine> bookedList = new List<VirtualMachine>();
     public GameObject canva;
+
+    public int tv, pc, web, phone;
+
     public Counter cTv, cPc, cWeb, cPhone;
     public Dictionary<TypeElement, int> values = new Dictionary<TypeElement, int>();
 
@@ -37,12 +40,12 @@ public class Queue : MonoBehaviour
         counters.Add(TypeElement.WEB, cWeb);
         counters.Add(TypeElement.PHONE, cPhone);
 
-        foreach (TypeElement t in Enum.GetValues(typeof(TypeElement))) values.Add(t, 20);
-        foreach (var v in counters.ToList())
-        {
-            v.Value.SetValue(20);
+        values.Add(TypeElement.TV, tv);
+        values.Add(TypeElement.PC, pc);
+        values.Add(TypeElement.WEB, web);
+        values.Add(TypeElement.PHONE, phone);
 
-        }
+        foreach (var v in values.ToList()) counters[v.Key].SetValue(v.Value);
     }
     private void UpdateColor(Image element, TypeElement type) => element.color = (values[type] == 0) ? green : red;
     private void CheckColor()
