@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 public class DialogPopup : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI arrow, arrow2, choice, choice2, textClient;
+    [SerializeField] private TextMeshProUGUI arrow, arrow2, choice, choice2, textClient, nameClient;
 
     public Dictionary<TextMeshProUGUI, TextMeshProUGUI> values = new();
 
@@ -19,6 +19,29 @@ public class DialogPopup : MonoBehaviour
     [SerializeField] private GameObject parentDisplay;
     [SerializeField] private WinPopup winPopup;
 
+    string[] prenoms = {
+             "Bob", "Charlie",  "Ethan", "George",  "Isaac",
+    };
+
+    string[] nomsDeFamille = {
+        "Martin", "Bernard", "Dubois", "Thomas", "Richard", "Petit", "Durand", "Leroy", "Moreau", "Simon"
+    };
+
+    static string CenterText(string text, int width)
+    {
+        if (text.Length >= width)
+        {
+            return text;
+        }
+
+        int spaces = width - text.Length;
+        int leftPadding = spaces / 2;
+        int rightPadding = spaces - leftPadding;
+
+        return new string(' ', leftPadding) + text + new string(' ', rightPadding);
+    }
+
+
     private void Start()
     {
         parentDisplay = gameObject.transform.parent.gameObject;
@@ -27,6 +50,8 @@ public class DialogPopup : MonoBehaviour
         CreateTreeDialogue();
         choice.SetText(parentTree.Children.ToArray()[0].Tag);
         choice2.SetText(parentTree.Children.ToArray()[1].Tag);
+        System.Random rand = new();
+        nameClient.SetText(CenterText(prenoms[rand.Next(prenoms.Length)] + " " + nomsDeFamille[rand.Next(nomsDeFamille.Length)], textClient.text.Length));
         StartCoroutine(Animation());
     }
 
@@ -84,17 +109,17 @@ public class DialogPopup : MonoBehaviour
 
     private void CreateTreeDialogue()
     {
-        TreeNode root = new("Vendre un téléphone reconditionné", "Bonjour puis-je avoir un téléphone ?");
-        TreeNode node1 = new("Proposez un modèle haut de gamme", "Oh bien ! ");
-        TreeNode node2 = new("Proposez un modèle milieu de gamme reconditionné", "D'accord...");
+        TreeNode root = new("", "Bonjour puis-je avoir un téléphone ?");
+        TreeNode node1 = new("Je vous propose un modèle haut de gamme", "Oh bien ! ");
+        TreeNode node2 = new("Je vous Propose un modèle milieu de gamme reconditionné", "D'accord...");
 
         TreeNode node3 = new("Proposez un fairphone", "Je vais prendre ce téléphone");
-        TreeNode node4 = new("Rassurez le client", "Ok ahah Il y a une garantie ?");
+        TreeNode node4 = new("Il n'y a aucun problèmes.", "Ok ahah Il y a une garantie ?");
         TreeNode node5 = new("Proposez un téléphone reconditionné en très bon état", "Ha");
         TreeNode node6 = new("Excellente décision", "Merci je pense revenir bientôt pour une télé", 3);
         TreeNode node7 = new("Excellent choix", "Merci je pense revenir bientôt pour une télé", 3);
-        TreeNode node8 = new("Proposez une garantie de 12 mois", "Ok Très bien", 1);
-        TreeNode node9 = new("Proposez une garantie de 24 mois", "Ok très bien", 2);
+        TreeNode node8 = new("Je vous proposez une garantie de 12 mois", "Ok Très bien", 1);
+        TreeNode node9 = new("Je vous propose une garantie de 24 mois", "Ok très bien", 2);
 
         root.AddChild(node1);
         root.AddChild(node2);

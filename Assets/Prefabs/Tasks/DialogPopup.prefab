@@ -289,9 +289,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Laurent Bodtlard
-
-'
+  m_text: "Nom qui sera g\xE9n\xE9rer..."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -354,7 +352,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 16.442657, z: 0, w: 0}
+  m_margin: {x: -89.34296, y: 16.442657, z: -86.3147, w: -19.685791}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -425,7 +423,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Choisir une r\xE9ponse\n"
+  m_text: 'blabla                                                                        '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1134,6 +1132,7 @@ MonoBehaviour:
   choice: {fileID: 7059799731403896365}
   choice2: {fileID: 5027848019440697344}
   textClient: {fileID: 8382032477119089207}
+  nameClient: {fileID: 7670881143372977483}
   durationPeriod: 0.46
   parentDisplay: {fileID: 5395418264413657828}
   winPopup: {fileID: 2193352115705875516, guid: 2c5f6d83185659140a6fd5752fb0694d, type: 3}
