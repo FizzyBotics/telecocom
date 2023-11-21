@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 public class DialogPopup : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI arrow, arrow2, choice, choice2;
+    [SerializeField] private TextMeshProUGUI arrow, arrow2, choice, choice2, textClient;
 
     public Dictionary<TextMeshProUGUI, TextMeshProUGUI> values = new();
 
@@ -61,6 +61,8 @@ public class DialogPopup : MonoBehaviour
                 parentTree = parentTree.Children.ToArray()[0];
             else
                 parentTree = parentTree.Children.ToArray()[1];
+
+            textClient.SetText(parentTree.ResponseClient);
             if (parentTree.Children.Count > 0)
             {
                 choice.SetText(parentTree.Children.ToArray()[0].Tag);
@@ -82,17 +84,17 @@ public class DialogPopup : MonoBehaviour
 
     private void CreateTreeDialogue()
     {
-        TreeNode root = new("Vendre un téléphone reconditionné");
-        TreeNode node1 = new("Proposez un modèle haut de gamme");
-        TreeNode node2 = new("Proposez un modèle milieu de gamme reconditionné");
+        TreeNode root = new("Vendre un téléphone reconditionné", "Bonjour puis-je avoir un téléphone ?");
+        TreeNode node1 = new("Proposez un modèle haut de gamme", "Oh bien ! ");
+        TreeNode node2 = new("Proposez un modèle milieu de gamme reconditionné", "D'accord...");
 
-        TreeNode node3 = new("Proposez un fairphone");
-        TreeNode node4 = new("Rassurez le client");
-        TreeNode node5 = new("Proposez un téléphone reconditionné en très bon état");
-        TreeNode node6 = new("Excellente décision", 3);
-        TreeNode node7 = new("Excellent choix", 3);
-        TreeNode node8 = new("Proposez une garantie de 12 mois", 1);
-        TreeNode node9 = new("Proposez une garantie de 24 mois", 2);
+        TreeNode node3 = new("Proposez un fairphone", "Je vais prendre ce téléphone");
+        TreeNode node4 = new("Rassurez le client", "Ok ahah Il y a une garantie ?");
+        TreeNode node5 = new("Proposez un téléphone reconditionné en très bon état", "Ha");
+        TreeNode node6 = new("Excellente décision", "Merci je pense revenir bientôt pour une télé", 3);
+        TreeNode node7 = new("Excellent choix", "Merci je pense revenir bientôt pour une télé", 3);
+        TreeNode node8 = new("Proposez une garantie de 12 mois", "Ok Très bien", 1);
+        TreeNode node9 = new("Proposez une garantie de 24 mois", "Ok très bien", 2);
 
         root.AddChild(node1);
         root.AddChild(node2);
@@ -112,6 +114,7 @@ public class DialogPopup : MonoBehaviour
         node5.AddChild(node8);
         node5.AddChild(node9);
         parentTree = root;
+        textClient.SetText(parentTree.ResponseClient);
     }
 
 
