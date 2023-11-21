@@ -10,10 +10,8 @@ public class TechnicianTask1 : MonoBehaviour
         queue.canva = parent;
         objective2.canva = parent;
     }
-
-    // Update is called once per frame
-    void Update()
+    void Delete()
     {
-
+        Destroy(gameObject);
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,7 @@ public class TaskManager : MonoBehaviour
     [SerializeField] private GameObject playerMovement;
 
     bool taskStarted = false;
+    bool finish = false;
 
     void Start()
     {
@@ -36,4 +38,12 @@ public class TaskManager : MonoBehaviour
         }
     }
 
+    void Update()
+    {
+        if (taskStarted && prefab == null && !finish)
+        {
+            playerMovement.SetActive(true);
+            finish = true;
+        }
+    }
 }
