@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MenuManager : MonoBehaviour
+public class InputMenuManager : MonoBehaviour
 {
     [SerializeField] private MenuButton[] menuButtons;
     [SerializeField] private AudioPlayer audioPlayer;
@@ -70,18 +70,5 @@ public class MenuManager : MonoBehaviour
     private void HandleButtonPressed(int buttonIndex)
     {
         Debug.Log("Button " + buttonIndex + " pressed");
-        switch (buttonIndex)
-        {
-            case 0:
-                Debug.Log("Entraînement");
-                SceneManager.LoadScene("Map");
-                break;
-            case 1:
-                Debug.Log("Multijoueur");
-                break;
-            case 2:
-                Debug.Log("Options");
-                break;
-        }
     }
 }
