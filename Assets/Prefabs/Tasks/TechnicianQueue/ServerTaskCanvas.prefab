@@ -742,7 +742,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1579778871520704739, guid: 797990cfc2d2b304d97f93222dc2c774, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1579778871520704739, guid: 797990cfc2d2b304d97f93222dc2c774, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
@@ -754,7 +754,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1579778871520704739, guid: 797990cfc2d2b304d97f93222dc2c774, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
-      value: 1
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1579778871520704739, guid: 797990cfc2d2b304d97f93222dc2c774, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[1].m_Target
@@ -767,7 +767,7 @@ PrefabInstance:
     - target: {fileID: 1579778871520704739, guid: 797990cfc2d2b304d97f93222dc2c774, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[3].m_Target
       value: 
-      objectReference: {fileID: 4183644495506103564}
+      objectReference: {fileID: 5142616979430546363}
     - target: {fileID: 1579778871520704739, guid: 797990cfc2d2b304d97f93222dc2c774, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
@@ -790,7 +790,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1579778871520704739, guid: 797990cfc2d2b304d97f93222dc2c774, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
-      value: StartOrCloseServer
+      value: SetReleased
       objectReference: {fileID: 0}
     - target: {fileID: 1579778871520704739, guid: 797990cfc2d2b304d97f93222dc2c774, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
@@ -802,7 +802,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1579778871520704739, guid: 797990cfc2d2b304d97f93222dc2c774, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
-      value: Server, Assembly-CSharp
+      value: Objective, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1579778871520704739, guid: 797990cfc2d2b304d97f93222dc2c774, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_BoolArgument
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1579778871520704739, guid: 797990cfc2d2b304d97f93222dc2c774, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
