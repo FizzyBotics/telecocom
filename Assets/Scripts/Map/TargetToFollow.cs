@@ -2,13 +2,17 @@ using UnityEngine;
 
 public class TargetToFollow : MonoBehaviour
 {
+    public bool paused = false;
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (!paused)
         {
-            Vector3 mousePos = Input.mousePosition;
-            Vector3 newTargetPos = Camera.main.ScreenToWorldPoint(mousePos);
-            transform.position = new Vector3(newTargetPos.x, newTargetPos.y, 0);
+            if (Input.GetMouseButtonDown(0))
+            {
+                Vector3 mousePos = Input.mousePosition;
+                Vector3 newTargetPos = Camera.main.ScreenToWorldPoint(mousePos);
+                transform.position = new Vector3(newTargetPos.x, newTargetPos.y, 0);
+            }
         }
     }
 }

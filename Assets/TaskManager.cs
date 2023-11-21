@@ -1,17 +1,13 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TaskManager : MonoBehaviour
 {
 
     [SerializeField] private TaskStarter taskStarter;
-    [SerializeField] private TaskStartingArea taskArea;
 
     [SerializeField] private GameObject prefab;
 
-    [SerializeField] private GameObject playerMovement;
+    [SerializeField] private TargetToFollow playerMovement;
 
     bool taskStarted = false;
     bool finish = false;
@@ -24,7 +20,6 @@ public class TaskManager : MonoBehaviour
     void Awake()
     {
         taskStarter.OnTaskStarted += OnEnterTechnicianTask1;
-        taskArea.OnPlayerEnteredArea += OnEnterTechnicianTask1;
     }
 
 
@@ -34,7 +29,7 @@ public class TaskManager : MonoBehaviour
         {
             prefab = Instantiate(prefab);
             taskStarted = true;
-            playerMovement.SetActive(false);
+            playerMovement.paused = true;
         }
     }
 
@@ -42,7 +37,7 @@ public class TaskManager : MonoBehaviour
     {
         if (taskStarted && prefab == null && !finish)
         {
-            playerMovement.SetActive(true);
+            playerMovement.paused = false;
             finish = true;
         }
     }
