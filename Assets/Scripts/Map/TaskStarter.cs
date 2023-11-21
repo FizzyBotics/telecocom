@@ -5,7 +5,7 @@ public class TaskStarter : MonoBehaviour
 	[SerializeField] private TaskStartingArea taskStartingArea;
 	public bool currentlySelected = false;
 	public delegate void TaskStarterDelegate();
-	public static event TaskStarterDelegate OnTaskStarted;
+	public event TaskStarterDelegate OnTaskStarted;
 
 	private void Awake()
 	{
