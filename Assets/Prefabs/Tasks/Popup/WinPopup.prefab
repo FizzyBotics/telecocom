@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a94c063ced466064f91b77341d7a678a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stars: 0
+  stars: 3
   star1: {fileID: 2745664025980605179}
   star2: {fileID: 3940904004432725841}
   star3: {fileID: 5769910072144089227}
@@ -313,7 +313,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8840247096079482666, guid: 4c278d24816b8044ba86a275976b97b7, type: 3}
       propertyPath: m_text
-      value: "T\xE2che compl\xE9t\xE9e !"
+      value: "T\xE2che compl\xE9t\xE9e"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
