@@ -11,7 +11,7 @@ public class Queue : MonoBehaviour
     private static Color red = new Color(190f / 255f, 71f / 255f, 71f / 255f);
 
     [SerializeField] private Server[] servers;
-    [SerializeField] private GameObject prefab;
+    [SerializeField] private WinPopup prefab;
     [SerializeField] private Image bTv, bPc, bWeb, bPhone; //background colors of counter
     public List<VirtualMachine> bookedList = new List<VirtualMachine>();
     public GameObject canva;
@@ -26,7 +26,7 @@ public class Queue : MonoBehaviour
     public Dictionary<TypeElement, Counter> counters = new Dictionary<TypeElement, Counter>();
     private bool winPopupSpawn = false;
 
-
+    private int numberOfServerNeedToDoTask = -1;
 
     private void Start()
     {
@@ -44,7 +44,7 @@ public class Queue : MonoBehaviour
         values.Add(TypeElement.PC, pc);
         values.Add(TypeElement.WEB, web);
         values.Add(TypeElement.PHONE, phone);
-
+        numberOfServerNeedToDoTask = (int)Math.Ceiling((tv + pc + web + phone) / 30f);
         foreach (var v in values.ToList()) counters[v.Key].SetValue(v.Value);
     }
     private void UpdateColor(Image element, TypeElement type) => element.color = (values[type] == 0) ? green : red;
@@ -68,7 +68,17 @@ public class Queue : MonoBehaviour
 
             if (AllElementsZero() && !winPopupSpawn && canva != null)
             {
-                Instantiate(prefab, canva.transform);
+                int serverUse = 0;
+                foreach (Server v in servers)
+                {
+                    if (v.IsOnline())
+                    {
+                        serverUse += 1;
+                    }
+                }
+                int starsScore = 3 - (serverUse - numberOfServerNeedToDoTask);
+                WinPopup o = Instantiate(prefab, canva.transform);
+                o.stars = starsScore;
                 winPopupSpawn = true;
             }
         }
