@@ -73,6 +73,10 @@ MonoBehaviour:
   bPhone: {fileID: 2979482020002091534}
   bookedList: []
   canva: {fileID: 0}
+  tv: -1
+  pc: -1
+  web: -1
+  phone: -1
   cTv: {fileID: 3000010334344970552}
   cPc: {fileID: 6503815463362682692}
   cWeb: {fileID: 6763140676925467817}

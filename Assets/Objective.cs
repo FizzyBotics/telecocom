@@ -65,7 +65,7 @@ public class Objective : MonoBehaviour
     public void MoveToUp()
     {
         Vector3 startPos = transform.position;
-        Vector3 endPos = startPos + new Vector3(0f, GetScreenSizeInPixels() / 2, 0f);
+        Vector3 endPos = startPos + new Vector3(0f, GetScreenSizeInPixels() / 1.55f, 0f);
         LeanTween.move(gameObject, endPos, 4f)
             .setEase(LeanTweenType.easeOutQuad)
             .setOnComplete(OnMovementComplete);

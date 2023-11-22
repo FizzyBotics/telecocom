@@ -16,7 +16,7 @@ public class Queue : MonoBehaviour
     public List<VirtualMachine> bookedList = new List<VirtualMachine>();
     public GameObject canva;
 
-    public int tv, pc, web, phone;
+    public int tv, pc, web, phone = -1;
 
     public Counter cTv, cPc, cWeb, cPhone;
     public Dictionary<TypeElement, int> values = new Dictionary<TypeElement, int>();
