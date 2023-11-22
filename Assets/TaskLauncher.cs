@@ -6,6 +6,8 @@ public class TaskLauncher : MonoBehaviour
 {
     [SerializeField] GameObject taskToLaunch;
     [SerializeField] private TargetToFollow playerMovement;
+
+    [SerializeField] private SpriteRenderer glowing;
     private bool started, finish;
     private string namee;
 
@@ -55,29 +57,26 @@ public class TaskLauncher : MonoBehaviour
 
     void OnMouseDown()
     {
-        if (!started)
+        if (!started && !finish)
         {
             namee = taskToLaunch.name;
             taskToLaunch = Instantiate(taskToLaunch);
             started = true;
-            Destroy(gameObject);
+            playerMovement.paused = true;
         }
     }
 
     void Update()
     {
         gameObject.transform.localScale = new Vector3(currentValue, currentValue, currentValue);
-        if (started && !finish)
-        {
-            playerMovement.paused = true;
-        }
-
 
         if (started && taskToLaunch == null && !finish)
         {
             Debug.Log(">> " + namee + " plus de pause pause !!");
             playerMovement.paused = false;
             finish = true;
+            gameObject.GetComponent<SpriteRenderer>().gameObject.SetActive(false);
+            glowing.gameObject.SetActive(false);
         }
     }
 }
