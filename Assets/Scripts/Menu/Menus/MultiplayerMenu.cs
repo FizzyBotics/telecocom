@@ -1,4 +1,5 @@
 using TMPro;
+using Unity.Netcode;
 using UnityEngine;
 
 public class MultiplayerMenu : Menu
@@ -7,7 +8,7 @@ public class MultiplayerMenu : Menu
     [SerializeField] private TMP_InputField joinCodeInputField;
     [SerializeField] private Relay relay;
 
-    public void OnHostButtonClicked()
+    public async void OnHostButtonClicked()
     {
         string username = usernameInputField.text;
         if (string.IsNullOrEmpty(username))
@@ -16,10 +17,11 @@ public class MultiplayerMenu : Menu
             return;
         }
 
-        relay.CreateRelay();
+        await relay.CreateRelay();
+        NetworkManager.Singleton.SceneManager.LoadScene("Map", UnityEngine.SceneManagement.LoadSceneMode.Single);
     }
 
-    public void OnJoinButtonClicked()
+    public async void OnJoinButtonClicked()
     {
         string username = usernameInputField.text;
         if (string.IsNullOrEmpty(username))
@@ -35,6 +37,6 @@ public class MultiplayerMenu : Menu
             return;
         }
 
-        relay.JoinRelay(joinCode);
+        await relay.JoinRelay(joinCode);
     }
 }
