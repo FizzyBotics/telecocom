@@ -38,10 +38,7 @@ public class Popup : MonoBehaviour
 
     public void Disappear()
     {
-        if (moveSpawndirection == Direction.RIGHT)
-            MoveLeft();
-        else
-            MoveRight();
+        Destroy(gameObject);
     }
 
     public void MoveRight()
@@ -65,6 +62,5 @@ public class Popup : MonoBehaviour
 
     void OnMovementComplete()
     {
-        Debug.Log("Movement Complete");
     }
 }
