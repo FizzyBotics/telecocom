@@ -15,6 +15,11 @@ public class GameManager : NetworkBehaviour
         Instance = this;
     }
 
+    private void Start()
+    {
+        MusicPlayer.Instance.audioPlayer.PlayAudioClip("map", true);
+    }
+
     public override void OnNetworkSpawn()
     {
         Debug.Log("Lobby code: " + Global.Instance.lobbyCode);

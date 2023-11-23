@@ -31,7 +31,7 @@ public class AudioPlayer : MonoBehaviour
     /// Plays the audio clip with the given name. The name is the name of the audio clip file without the extension.
     /// </summary>
     /// <param name="audioClipName">The name of the audio clip file without the extension.</param>
-    public void PlayAudioClip(string audioClipName)
+    public void PlayAudioClip(string audioClipName, bool music = false)
     {
         if (audioSource == null)
         {
@@ -43,8 +43,12 @@ public class AudioPlayer : MonoBehaviour
             Debug.LogError("Audio clip not found: " + audioClipName);
             return;
         }
-
-        Debug.Log("Playing audio clip: " + audioClipName);
-        audioSource.PlayOneShot(audioClipsDict[audioClipName]);
+        if (music && audioSource.isPlaying)
+        {
+            audioSource.Stop();
+        }
+        audioSource.loop = music;
+        audioSource.clip = audioClipsDict[audioClipName];
+        audioSource.Play();
     }
 }
