@@ -5,9 +5,13 @@ using UnityEngine.UI;
 [RequireComponent(typeof(NetworkReceiver))]
 public class NetworkTester : MonoBehaviour
 {
+    [HideInInspector]
+    public NetworkReceiver networkReceiver;
+
     private void Awake()
     {
-        GetComponent<NetworkReceiver>().OnRangeChange += OnRangeChange;
+        networkReceiver = GetComponent<NetworkReceiver>();
+        networkReceiver.OnRangeChange += OnRangeChange;
     }
 
     private void OnRangeChange(bool isInRange)
